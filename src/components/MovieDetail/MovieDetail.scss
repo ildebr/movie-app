@@ -1,0 +1,91 @@
+.movie-section{
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    margin-bottom: 3rem;
+
+    .section-left{
+        order: 2;
+    }
+
+    .section-right{
+        order:1 ;
+    }
+
+    .synopsis{
+        text-align: left;
+        
+        h3{
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+    }
+
+    .about-movie{
+        text-align: left;
+        .about{
+            border-bottom: 1px solid gray;
+            padding: 0.25rem 0;
+            font-size: .75rem;
+
+        }
+
+        .type{
+            text-transform: uppercase;
+        }
+    }
+
+    .movie-title, .about-movie{
+        margin-bottom: 2rem;
+    }
+
+    .movie-title h2{
+        font-size: 2.5rem;
+    }
+}
+
+.about-movie-big{
+    display: none;
+}
+
+@media(min-width: 900px){
+    .about-movie-big{
+        display: initial;
+        .line{
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            margin-bottom: 8px;
+
+            .section{
+                display: flex;
+                -webkit-box-align: center;
+                align-items: center;
+
+                .shortseparator{
+                    width: 15px;
+                    height: 1px;
+                    background-color: pink;
+                    margin: 0 7px;
+                }
+            }
+
+            .longseparatorcontainer{
+                flex: 1 1 0%;
+                height: 1px;
+                padding: 0px 7px;
+                position: relative;
+
+                .longseparator{
+                    height: 100%;
+                    width: 100%;
+                    background-color: pink;
+                }
+            }
+        }
+    }
+
+    .about-movie{display: none;}
+}

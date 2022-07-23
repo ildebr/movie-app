@@ -1,0 +1,47 @@
+@import "../../common/colors.scss";
+
+.card-item{
+    cursor: pointer;
+    transition: all .3s;
+    padding-bottom: 3rem;
+
+    &:hover{
+        transform: scale(1.05);
+        transition: all .3s;
+    }
+}
+
+.img-section{
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    transition: .3s ease;
+
+    .hover-box{
+        position: absolute;
+        z-index: 10;
+        bottom: -56px;
+        transition: .4s ease;
+        background: #b54d18;
+        width: 100%;
+        padding: .5rem;
+        font-weight: 900;
+    }
+
+    &:hover .hover-box{
+        bottom: 0;
+    }
+}
+
+.card-top{
+
+    width: 100%;
+
+    img{
+        width: 100%;
+        max-width: 400px;
+        height: 100%;
+    }
+}
