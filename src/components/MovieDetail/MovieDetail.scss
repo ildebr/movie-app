@@ -50,6 +50,32 @@
     display: none;
 }
 
+.movieCarrousel{
+    order: 3;
+
+    position: relative;
+    .movie-carrousel-elements{
+        display: flex;
+        overflow: hidden;
+        transition: .2s ease;
+        scroll-behavior: smooth;
+    }
+
+    .right-arrow, .left-arrow{
+        position: absolute;
+        right: 0;
+        top: 50%;
+        height: 20px;
+        width: 20px;
+        background-color: red;
+        z-index: 5;
+    }
+
+    .left-arrow{
+        left: 0;
+    }
+}
+
 @media(min-width: 900px){
     .about-movie-big{
         display: initial;

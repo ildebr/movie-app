@@ -20,6 +20,7 @@ export const fetchAsyncMoviesOrSeries = createAsyncThunk('series/fetchAsyncMovie
         return response.data
 })
 
+
 export const fetchAsyncHeader = createAsyncThunk('series/fetchAsyncHeader', async()=>{
     const serieText = "20th century women"
     console.log("shrek")

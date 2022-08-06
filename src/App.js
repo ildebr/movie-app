@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header />
+        {/* <Header /> */}
 
         <Routes>
           <Route path="/movie/:imdbID" element={<MovieDetail />} />

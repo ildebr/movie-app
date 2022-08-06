@@ -2,11 +2,14 @@ import React, { useEffect } from 'react';
 import {useParams} from "react-router-dom"
 import {useDispatch, useSelector} from "react-redux"
 import { fetchAsyncMoviesOrSeries,getSelectedMovieOrShow, removeSelectedMovieOrShow } from '../../features/movies/movieSlice';
+import { getAllmovies} from '../../features/movies/movieSlice';
 import "./MovieDetail.scss"
+import MovieCarrousel from '../MovieCarrousel/MovieCarrousel';
 
 const MovieDetail = () =>{
     const {imdbID} = useParams();
     const dispatch = useDispatch();
+    console.log(imdbID)
     const data = useSelector(getSelectedMovieOrShow)
     console.log(data)
     useEffect(()=>{
@@ -15,6 +18,49 @@ const MovieDetail = () =>{
         //     dispatch(removeSelectedMovieOrShow())
         // }
     },[dispatch])
+
+    let renderMoviesCarrousel = ""
+
+    const movies = useSelector(getAllmovies)
+    console.log(movies)
+    renderMoviesCarrousel = movies.Response === "True" ? (
+        movies.Search.map((movie,index)=>{
+            return <MovieCarrousel key={index} data={movie} />
+        })
+    ) : (<div> Cargando </div>)
+
+
+    const moveRight = () =>{
+        console.log("p")
+        const p = document.querySelector(".movie-carrousel-elements")
+
+        const sw = p.scrollWidth
+        const ow = p.offsetWidth
+        const mv = p.offsetWidth/2
+        const sl = p.scrollLeft
+        console.log("sl+mv "+ (sl+mv) + "   sw " + sw)
+        if(sl+mv <= sw){
+            p.scrollLeft += mv
+        }
+    }
+    const moveLeft = () =>{
+        const p = document.querySelector(".movie-carrousel-elements")
+
+        const sw = p.scrollWidth
+        const ow = p.offsetWidth
+        const mv = p.offsetWidth/2
+        const sl = p.scrollLeft
+        console.log("sl+mv "+ (sl+mv) + "   sw " + sw)
+        if(sl > 0){
+            p.scrollLeft -= mv
+        }
+    }
+
+    const t = document.querySelector(".movie-carrousel-elements")
+
+    // t.addEventListener('touchstart', function(){
+    //     console.log("alo")
+    // })
     return(
         <div className="movie-section">
             {Object.keys(data).length === 0 ? 
@@ -114,8 +160,20 @@ const MovieDetail = () =>{
             <div className="section-right">
                 <img src={data.Poster} alt={data.Title}/>
             </div>
+
+            <div className="movieCarrousel">
+                <div className="left-arrow" onClick={moveLeft}></div>
+                <div className="movie-carrousel-elements">
+                    {renderMoviesCarrousel}
+
+                    
+                </div>
+                <div className="right-arrow" onClick={moveRight}></div>
+            </div>
             </>
         }
+
+        
         </div>
     ) 
 }
